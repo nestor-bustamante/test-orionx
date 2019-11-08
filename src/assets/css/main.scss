@@ -1,0 +1,148 @@
+@import 'vars';
+@import 'mixins';
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+
+html {
+  font-size: 10px;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:hover,
+:focus {
+  outline: 0;
+}
+
+body {
+  background: $bkg;
+  font: 300 $gutter 'Lato';
+  color: $light;
+  text-rendering: optimizeLegibility;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .wrapper {
+    margin: 1rem;
+    width: 36rem;
+    position: relative;
+    &:after {
+      position: absolute;
+      content: '';
+      width: 90%;
+      height: 10rem;
+      @include borderRadius(50%);
+      background: rgba(0,0,0, .35);
+      bottom: -3rem;
+      left: 5%;
+      filter: blur(1.5em);
+    }
+    .container {
+      padding: $gutter*2;
+      background: $white;
+      @include borderRadius($gutter/2);
+      position: relative;
+      z-index: 2;
+      .container-invoice {
+        display: flex;
+        margin-top: 2rem;
+        min-height: 12rem;
+        border-bottom: .1rem dashed $light;
+        > div {
+          flex-grow: 1;
+          &:first-child {
+            letter-spacing: .2rem;
+          }
+        }
+        .title {
+          text-transform: uppercase;
+          font-weight: 700;
+          color: $dark;
+          .date {
+            margin-top: 1.2rem;
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: $light;
+          }
+        }
+        .number {
+          text-align: right;
+        }
+      }
+      .container-table {
+        border-bottom: .1rem dashed $light;
+        table {
+          width: 100%;
+          padding: 2rem 0 .5rem 0;
+          thead {
+            tr {
+              th {
+                font-weight: 400;
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: .2rem;
+                text-align: right;
+                width: 22.65%;
+                padding-bottom: 1rem;
+                &:first-child {
+                  text-align: left;
+                  width: auto;
+                }
+              }
+            }
+          }
+          tbody {
+            tr {
+              td {
+                padding: 1rem 0;
+                text-align: right;
+                color: $dark;
+                &:first-child {
+                  text-align: left;
+                  font-weight: 700;
+                  span {
+                    font-weight: 400;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .container-buttons {
+        text-align: right;
+        margin: 1rem -1rem -2rem 0;
+        button {
+          border: none;
+          background: none;
+          font: 900 1.4rem 'Lato';
+          text-transform: uppercase;
+          padding: 1rem;
+          color: $light;
+          letter-spacing: .08rem;
+          cursor: pointer;
+          @include transition(.3s);
+          &:hover {
+            color: darken($light, 10%);
+          }
+          &.primary {
+            color: $bkg;
+            &:hover {
+              color: darken($bkg, 7%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
